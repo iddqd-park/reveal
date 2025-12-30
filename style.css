@@ -1,0 +1,209 @@
+:root {
+    --blur-amount: 40px;
+    --primary-color: #00d2ff;
+    --overlay-bg: rgba(0, 0, 0, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Orbitron', sans-serif;
+    /* Fallback will be loaded via CDN */
+    color: white;
+}
+
+/* Background/Iframe Layer */
+#content-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: 1;
+    background-color: #111;
+    /* Placeholder color */
+}
+
+/* Blur Overlay Layer */
+#reveal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    background-color: transparent;
+    pointer-events: none;
+    /* Let clicks pass through if needed, but we might want to block interaction until reveal */
+    transition: backdrop-filter 0.1s linear;
+}
+
+/* UI Layer */
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    pointer-events: none;
+    /* Allow clicking on iframe if uncovered? No, per spec, iframe is visual only until GO */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Input Section (Top/Response) */
+.input-container {
+    pointer-events: auto;
+    padding: 20px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s;
+}
+
+.glass-input {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 500px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.glass-btn {
+    background: var(--primary-color);
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--primary-color);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.glass-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Control Section (Bottom) */
+.controls-container {
+    pointer-events: auto;
+    padding: 30px 20px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.3s ease-out;
+}
+
+.slider-wrapper {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    margin-top: -10px;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.go-btn {
+    font-size: 1.5rem;
+    padding: 15px 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Footer (Hidden mostly, but strictly required by guidelines) */
+.footer-branding {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+/* Initial/Welcome State */
+.welcome-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s;
+}
+
+.welcome-title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 0 0 20px var(--primary-color);
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+}
+
+.welcome-desc {
+    font-family: 'Inter', sans-serif;
+    color: #aaa;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 80%;
+}
+
+.welcome-desc strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}

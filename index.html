@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Project REVEAL</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+
+    <!-- Background Iframe -->
+    <iframe id="content-frame" sandbox="allow-same-origin allow-scripts allow-forms allow-popups" src="about:blank"></iframe>
+    
+    <!-- Blur Overlay -->
+    <div id="reveal-overlay"></div>
+    
+    <!-- Welcome Screen -->
+    <div class="welcome-screen">
+        <h1 class="welcome-title">REVEAL</h1>
+        <div class="welcome-desc">
+            <p><strong>The Privacy Curtain for Shared Links.</strong></p>
+            <p>1. Enter a URL below.</p>
+            <p>2. Share the 'Revealing' link with others.</p>
+            <p>3. Use the slider to reveal the content slowly.</p>
+        </div>
+    </div>
+
+    <!-- UI Layer -->
+    <div id="ui-layer">
+        <!-- Input Section -->
+        <div class="input-container">
+            <button id="home-btn" class="glass-btn hidden" style="margin-right: 10px; padding: 10px 15px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                    <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                </svg>
+            </button>
+            <input type="text" id="url-input" class="glass-input" placeholder="example.com">
+            <button id="load-btn" class="glass-btn">LOAD</button>
+        </div>
+
+        <!-- Controls Section -->
+        <div class="controls-container">
+            <div class="slider-wrapper">
+                <label for="blur-slider" style="margin-bottom: 10px; display: block; opacity: 0.7;">REVEAL AMOUNT</label>
+                <input type="range" id="blur-slider" min="0" max="40" value="40" step="1">
+            </div>
+            
+            <button id="go-btn" class="glass-btn go-btn">GO</button>
+            <a href="https://iddqd.kr" target="_blank" class="footer-branding">IDDQD INTERNET PRESENTS</a>
+        </div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+</body>
+</html>
