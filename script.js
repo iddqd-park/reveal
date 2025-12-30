@@ -123,4 +123,17 @@ $(document).ready(function () {
     setTimeout(() => {
         window.scrollTo(0, 1);
     }, 100);
+
+    // Language Detection (Korean)
+    const userLang = navigator.language || navigator.userLanguage;
+    if (userLang.includes('ko')) {
+        $('.welcome-desc').html(`
+            <p><strong>의심스러운 링크를 안전하게 확인하세요.</strong></p>
+            <p>1. 아래에 URL을 입력하세요.</p>
+            <p>2. 생성된 '안심 링크'를 친구에게 공유하세요.</p>
+            <p>3. 슬라이더를 움직여 내용을 천천히 확인하세요.</p>
+        `);
+        $('.welcome-desc').css('word-break', 'keep-all');
+        $('#url-input').attr('placeholder', 'URL을 입력하세요 (예: example.com)');
+    }
 });
