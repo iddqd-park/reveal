@@ -2,7 +2,7 @@
 
 [한국어](README.ko.md)
 
-**Project REVEAL** is a privacy-focused web tool that allows for the secure and dramatic sharing of URLs. It loads a target website behind a heavy blur curtain, which the user can manually reveal using a slider control.
+**Project REVEAL** is a safe viewer for suspicious links sent by your 'friends.' Whether it's a jump scare, NSFW content, or just a weird image, load it behind a heavy blur curtain first. Only when you're ready, use the slider to slowly reveal the truth.
 
 ## Our Philosophy
 IDDQD Internet builds zero-DB, zero-signup tools powered by pure HTML/JS for instant browser execution. Even with AI features, we keep it stateless and record-free.
